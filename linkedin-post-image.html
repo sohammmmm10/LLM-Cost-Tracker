@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LinkedIn Post Image - Screenshot This</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Segoe UI', Arial, sans-serif; }
+
+.card {
+  width: 1200px;
+  height: 627px;
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1a3e 50%, #0f172a 100%);
+  border-radius: 20px;
+  padding: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(99,102,241,0.3) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+}
+
+.glow2 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(34,211,238,0.2) 0%, transparent 70%);
+  bottom: -50px;
+  left: -50px;
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+h1 {
+  color: white;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+h1 span { color: #22d3ee; }
+
+.subtitle {
+  color: #94a3b8;
+  font-size: 22px;
+  margin-bottom: 35px;
+}
+
+.features {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.feature {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 15px 25px;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+}
+
+.feature span { font-size: 24px; margin-right: 10px; }
+
+.code-preview {
+  background: #0d1117;
+  border-radius: 12px;
+  padding: 20px 25px;
+  font-family: 'Consolas', monospace;
+  font-size: 16px;
+  border: 1px solid #30363d;
+  margin-bottom: 30px;
+}
+
+.code-line { margin: 8px 0; }
+.code-gray { color: #6e7681; }
+.code-blue { color: #79c0ff; }
+.code-green { color: #7ee787; }
+.code-orange { color: #ffa657; }
+.code-cost { color: #fbbf24; background: rgba(251,191,36,0.1); padding: 2px 8px; border-radius: 4px; margin-left: 20px; }
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.author-pic {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.author-info h3 { color: white; font-size: 18px; }
+.author-info p { color: #64748b; font-size: 14px; }
+
+.brand {
+  text-align: right;
+}
+
+.brand h2 { color: #a78bfa; font-size: 28px; font-weight: 700; letter-spacing: 3px; }
+.brand p { color: #64748b; font-size: 12px; }
+
+.vscode-badge {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  background: #007acc;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="glow"></div>
+  <div class="glow2"></div>
+  
+  <div class="vscode-badge">
+    <span>⬛</span> VS Code Extension — LIVE
+  </div>
+  
+  <div class="badge">🚀 JUST PUBLISHED</div>
+  
+  <h1>LLM Cost Tracker<br>by <span>PHANTSOM</span></h1>
+  
+  <p class="subtitle">See what every AI API call costs — before it hits your bill</p>
+  
+  <div class="features">
+    <div class="feature"><span>💰</span> Real-time cost estimates</div>
+    <div class="feature"><span>🎨</span> Color-coded by expense</div>
+    <div class="feature"><span>💡</span> Suggests cheaper models</div>
+    <div class="feature"><span>📊</span> 40+ AI models supported</div>
+  </div>
+  
+  <div class="code-preview">
+    <div class="code-line"><span class="code-gray">response = client.chat.completions.create(</span></div>
+    <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">model</span>=<span class="code-green">"gpt-4o"</span>,<span class="code-cost">🟡 $0.003/call · ~$9/mo</span></div>
+    <div class="code-line"><span class="code-gray">)</span></div>
+  </div>
+  
+  <div class="bottom">
+    <div class="author">
+      <div class="author-pic">SD</div>
+      <div class="author-info">
+        <h3>Soham Dahivalkar</h3>
+        <p>Generative AI Engineer</p>
+      </div>
+    </div>
+    <div class="brand">
+      <h2>PHANTSOM</h2>
+      <p>The Invisible Force Behind Intelligent Systems</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

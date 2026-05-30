@@ -1,0 +1,187 @@
+{
+  "name": "llm-cost-estimator",
+
+  "displayName": "LLM Cost Tracker by PHANTSOM",
+  "description": "Inline cost estimates for every LLM API call in your code. Supports OpenAI, Anthropic, Google Gemini, Mistral, Cohere, DeepSeek & more.",
+  "version": "1.0.1",
+  "publisher": "sohamdahivalkar",
+  "author": {
+    "name": "Soham Dahivalkar",
+    "email": "sohamdahivalkar4@gmail.com",
+    "url": "https://github.com/phantsom"
+  },
+  "license": "MIT",
+
+  "icon": "resources/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phantsom/llm-cost-estimator"
+  },
+  "bugs": {
+    "url": "https://github.com/phantsom/llm-cost-estimator/issues"
+  },
+  "homepage": "https://github.com/phantsom/llm-cost-estimator#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Linters",
+    "Visualization"
+  ],
+  "keywords": [
+    "llm",
+    "openai",
+    "gpt",
+    "claude",
+    "anthropic",
+    "gemini",
+    "cost",
+    "estimator",
+    "tokens",
+    "ai",
+    "genai",
+    "pricing",
+    "budget",
+    "api-cost",
+    "phantsom"
+  ],
+  "activationEvents": [
+    "onLanguage:python",
+    "onLanguage:typescript",
+    "onLanguage:javascript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascriptreact"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "llmCost.toggleInlineCosts",
+        "title": "LLM Cost: Toggle Inline Cost Display"
+      },
+      {
+        "command": "llmCost.showFileSummary",
+        "title": "LLM Cost: Show File Cost Summary"
+      },
+      {
+        "command": "llmCost.refreshPricing",
+        "title": "LLM Cost: Refresh Cost Estimates"
+      },
+      {
+        "command": "llmCost.setMonthlyBudget",
+        "title": "LLM Cost: Set Monthly Budget Alert"
+      }
+    ],
+    "configuration": {
+      "title": "LLM Cost Estimator",
+      "properties": {
+        "llmCost.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable inline cost decorations"
+        },
+        "llmCost.defaultInputTokens": {
+          "type": "number",
+          "default": 500,
+          "description": "Default estimated input tokens per call (if not detectable from code)"
+        },
+        "llmCost.defaultOutputTokens": {
+          "type": "number",
+          "default": 300,
+          "description": "Default estimated output tokens per call (if max_tokens not found)"
+        },
+        "llmCost.callsPerDay": {
+          "type": "number",
+          "default": 100,
+          "description": "Estimated API calls per day (used for daily/monthly projections)"
+        },
+        "llmCost.currency": {
+          "type": "string",
+          "default": "USD",
+          "enum": [
+            "USD",
+            "EUR",
+            "GBP",
+            "INR",
+            "JPY"
+          ],
+          "description": "Display currency for cost estimates"
+        },
+        "llmCost.monthlyBudget": {
+          "type": "number",
+          "default": 0,
+          "description": "Monthly budget in USD. Set to 0 to disable budget warnings."
+        },
+        "llmCost.showCodeLens": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show CodeLens cost info above LLM API calls"
+        },
+        "llmCost.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show total file cost in status bar"
+        },
+        "llmCost.showHoverDetails": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show detailed cost breakdown on hover"
+        },
+        "llmCost.decorationStyle": {
+          "type": "string",
+          "default": "badge",
+          "enum": [
+            "badge",
+            "minimal",
+            "detailed"
+          ],
+          "description": "Inline decoration style: badge (colored), minimal (grey text), detailed (with breakdown)"
+        }
+      }
+    },
+    "colors": [
+      {
+        "id": "llmCost.cheapColor",
+        "description": "Color for cheap API calls (< $0.01)",
+        "defaults": {
+          "dark": "#4ade80",
+          "light": "#16a34a"
+        }
+      },
+      {
+        "id": "llmCost.moderateColor",
+        "description": "Color for moderate API calls ($0.01 - $0.10)",
+        "defaults": {
+          "dark": "#facc15",
+          "light": "#ca8a04"
+        }
+      },
+      {
+        "id": "llmCost.expensiveColor",
+        "description": "Color for expensive API calls (> $0.10)",
+        "defaults": {
+          "dark": "#f87171",
+          "light": "#dc2626"
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "@vscode/vsce": "^3.9.1",
+    "eslint": "^8.56.0",
+    "typescript": "^6.0.3"
+  }
+}

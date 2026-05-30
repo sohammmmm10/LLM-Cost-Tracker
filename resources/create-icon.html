@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LLM Cost Estimator Icon Generator</title>
+</head>
+<body style="margin:0;padding:20px;background:#1e1e1e;display:flex;flex-direction:column;align-items:center;gap:20px;">
+
+<h2 style="color:white;">Right-click the icon below → "Save image as" → save as icon.png</h2>
+
+<canvas id="icon" width="256" height="256"></canvas>
+
+<script>
+const canvas = document.getElementById('icon');
+const ctx = canvas.getContext('2d');
+const size = 256;
+
+// Background - dark gradient
+const grad = ctx.createLinearGradient(0, 0, size, size);
+grad.addColorStop(0, '#0f0f23');
+grad.addColorStop(1, '#1a1a3e');
+ctx.fillStyle = grad;
+ctx.beginPath();
+ctx.roundRect(0, 0, size, size, 32);
+ctx.fill();
+
+// Glowing border
+ctx.strokeStyle = '#6366f1';
+ctx.lineWidth = 3;
+ctx.beginPath();
+ctx.roundRect(4, 4, size-8, size-8, 28);
+ctx.stroke();
+
+// Dollar sign - main
+ctx.font = 'bold 120px Arial';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+
+// Glow effect
+ctx.shadowColor = '#22d3ee';
+ctx.shadowBlur = 25;
+ctx.fillStyle = '#22d3ee';
+ctx.fillText('$', size/2, size/2 - 10);
+
+// Remove shadow for rest
+ctx.shadowBlur = 0;
+
+// Small AI text at bottom
+ctx.font = 'bold 28px Arial';
+ctx.fillStyle = '#a78bfa';
+ctx.fillText('AI', size/2, size - 45);
+
+// Pulse dots (representing cost tiers)
+const dotColors = ['#4ade80', '#facc15', '#fb923c', '#f87171'];
+const dotY = 42;
+const dotSpacing = 30;
+const startX = size/2 - (dotColors.length - 1) * dotSpacing / 2;
+
+dotColors.forEach((color, i) => {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(startX + i * dotSpacing, dotY, 7, 0, Math.PI * 2);
+    ctx.fill();
+});
+
+// "LLM" text top-left small
+ctx.font = 'bold 18px Arial';
+ctx.fillStyle = '#94a3b8';
+ctx.textAlign = 'left';
+ctx.fillText('LLM', 20, 42);
+
+// Cost text top-right small  
+ctx.textAlign = 'right';
+ctx.fillText('COST', size - 20, 42);
+</script>
+
+</body>
+</html>
